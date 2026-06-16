@@ -1,0 +1,57 @@
+# Pages CMS configuration  —  https://pagescms.org
+# Connect this repo at https://app.pagescms.org (sign in with GitHub) to edit terms in a visual form.
+
+content:
+  - name: terms
+    label: Glossary terms
+    type: file
+    path: data/terms.json
+    format: json
+    list: true
+    view:
+      fields: [w, c, b]
+      primary: w
+      sort: [w]
+    fields:
+      - name: w
+        label: Term
+        type: string
+        required: true
+      - name: c
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - { value: cards,   label: "Cards" }
+            - { value: rails,   label: "Bank Rails" }
+            - { value: infra,   label: "Infrastructure" }
+            - { value: crypto,  label: "Crypto & Digital Money" }
+            - { value: methods, label: "Alternative Methods" }
+            - { value: pricing, label: "Pricing & Economics" }
+            - { value: risk,    label: "Risk & Compliance" }
+            - { value: eco,     label: "Ecosystem" }
+      - name: ph
+        label: "Phonetic (IPA)  —  optional, only for tricky pronunciations"
+        type: string
+      - name: exp
+        label: "Subhead / expansion  —  optional (e.g. acronym spelled out)"
+        type: string
+      - name: p
+        label: "Actual Definition"
+        type: text
+        required: true
+      - name: x
+        label: "Relatable Definition (the witty one)"
+        type: text
+        required: true
+      - name: g
+        label: "What It's Good For"
+        type: text
+        required: true
+      - name: b
+        label: "Buzzword?  (tick to flag with the ✦ marker)"
+        type: boolean
+
+# Cross-links: inside any definition, write [[Term]] or [[Term|display text]]
+# to link to another entry. They render as clickable links on the site.

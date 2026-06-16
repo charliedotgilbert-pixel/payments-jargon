@@ -574,6 +574,17 @@ fetch('data/terms.json',{cache:'no-cache'})
   </div>
 </div>
 <script>
+/* shorter search placeholder on small screens (the witty one truncates on phones) */
+(function(){
+  var input = document.getElementById('searchInput');
+  if (!input) return;
+  var full = 'Heard it but no idea? Search here…';
+  var short = 'Search a term…';
+  var mq = window.matchMedia('(max-width: 600px)');
+  function setPH(){ input.placeholder = mq.matches ? short : full; }
+  setPH();
+  (mq.addEventListener ? mq.addEventListener('change', setPH) : mq.addListener(setPH));
+})();
 (function(){
   var banner = document.getElementById('cookie-banner');
   var stored = null;
